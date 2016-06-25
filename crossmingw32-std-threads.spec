@@ -9,8 +9,11 @@ License:	BSD
 Group:		Development/Libraries
 Source0:	https://github.com/meganz/mingw-std-threads/archive/%{gitref}/mingw-std-threads-%{snap}.tar.gz
 # Source0-md5:	e5f0fcdb69d99ab493f45e65767f9346
+Patch0:		mingw-std-threads-include.patch
 URL:		https://github.com/meganz/mingw-std-threads
 Requires:	crossmingw32-gcc-c++ >= 1:4.7
+Requires:	crossmingw32-runtime
+Requires:	crossmingw32-w32api
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -33,6 +36,7 @@ brakujących w GCC dla MinGW.
 
 %prep
 %setup -q -n mingw-std-threads-%{gitref}
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT

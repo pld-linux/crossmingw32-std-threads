@@ -1,0 +1,19 @@
+--- mingw-std-threads-b7e670d91d33b7ce5836c6255d37e69f17eb3687/mingw.mutex.h.orig	2016-03-16 15:05:58.000000000 +0100
++++ mingw-std-threads-b7e670d91d33b7ce5836c6255d37e69f17eb3687/mingw.mutex.h	2016-06-25 09:17:48.884289745 +0200
+@@ -41,6 +41,7 @@
+ 
+ #include <windows.h>
+ #include <chrono>
++#include <cstdio>
+ #include <system_error>
+ 
+ #ifndef EPROTO
+@@ -105,7 +106,7 @@
+         DWORD self = GetCurrentThreadId();
+         if (mOwnerThread == self)
+         {
+-            fprintf(stderr, "FATAL: Recursive locking or non-recursive mutex detected. Throwing sysetm exception\n");
++            fprintf(stderr, "FATAL: Recursive locking or non-recursive mutex detected. Throwing system exception\n");
+             fflush(stderr);
+             throw system_error(EDEADLK, generic_category());
+         }
