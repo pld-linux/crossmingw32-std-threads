@@ -8,7 +8,8 @@ Name:		crossmingw32-std-threads
 Version:	0
 %define	gitref	ee67ef384470e998c8e0b7301f7a79b5019251a2
 %define	snap	20180912
-Release:	0.%{snap}.1
+%define	rel	2
+Release:	0.%{snap}.%{rel}
 License:	BSD
 Group:		Development/Libraries
 Source0:	https://github.com/meganz/mingw-std-threads/archive/%{gitref}/mingw-std-threads-%{snap}.tar.gz
