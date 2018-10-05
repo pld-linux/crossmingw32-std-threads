@@ -1,0 +1,25 @@
+--- mingw-std-threads-ee67ef384470e998c8e0b7301f7a79b5019251a2/mingw.condition_variable.h.orig	2018-09-11 17:06:14.000000000 +0200
++++ mingw-std-threads-ee67ef384470e998c8e0b7301f7a79b5019251a2/mingw.condition_variable.h	2018-10-03 21:35:48.633130795 +0200
+@@ -105,7 +105,7 @@
+         else
+         {
+             using namespace std;
+-            throw system_error(make_error_code(errc::protocol_error));
++            throw system_error(make_error_code(errc::invalid_argument));
+         }
+     }
+ public:
+--- reads-ee67ef384470e998c8e0b7301f7a79b5019251a2/mingw.mutex.h.orig	2018-09-11 17:06:14.000000000 +0200
++++ reads-ee67ef384470e998c8e0b7301f7a79b5019251a2/mingw.mutex.h	2018-10-03 21:40:38.086460829 +0200
+@@ -300,9 +300,9 @@
+         case WAIT_OBJECT_0:
+             return true;
+         case WAIT_ABANDONED:
+-            throw system_error(make_error_code(errc::owner_dead));
++            throw system_error(make_error_code(errc::no_such_process));
+         default:
+-            throw system_error(make_error_code(errc::protocol_error));
++            throw system_error(make_error_code(errc::invalid_argument));
+         }
+     }
+ protected:

@@ -1,19 +1,10 @@
---- mingw-std-threads-b7e670d91d33b7ce5836c6255d37e69f17eb3687/mingw.mutex.h.orig	2016-03-16 15:05:58.000000000 +0100
-+++ mingw-std-threads-b7e670d91d33b7ce5836c6255d37e69f17eb3687/mingw.mutex.h	2016-06-25 09:17:48.884289745 +0200
-@@ -41,6 +41,7 @@
+--- mingw-std-threads-ee67ef384470e998c8e0b7301f7a79b5019251a2/mingw.shared_mutex.h.orig	2018-09-11 17:06:14.000000000 +0200
++++ mingw-std-threads-ee67ef384470e998c8e0b7301f7a79b5019251a2/mingw.shared_mutex.h	2018-10-04 20:56:12.195504727 +0200
+@@ -32,6 +32,7 @@
+ #endif
  
- #include <windows.h>
- #include <chrono>
-+#include <cstdio>
- #include <system_error>
+ #include <cassert>
++#include <climits>
  
- #ifndef EPROTO
-@@ -105,7 +106,7 @@
-         DWORD self = GetCurrentThreadId();
-         if (mOwnerThread == self)
-         {
--            fprintf(stderr, "FATAL: Recursive locking or non-recursive mutex detected. Throwing sysetm exception\n");
-+            fprintf(stderr, "FATAL: Recursive locking or non-recursive mutex detected. Throwing system exception\n");
-             fflush(stderr);
-             throw system_error(EDEADLK, generic_category());
-         }
+ //    Use MinGW's shared_lock class template, if it's available. Requires C++14.
+ //  If unavailable (eg. because this library is being used in C++11), then an
