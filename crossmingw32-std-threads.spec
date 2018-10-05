@@ -23,6 +23,7 @@ BuildRequires:	crossmingw32-gcc-c++ >= 1:4.7
 Requires:	crossmingw32-gcc-c++ >= 1:4.7
 Requires:	crossmingw32-runtime
 Requires:	crossmingw32-w32api
+ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		no_install_post_strip	1
@@ -39,7 +40,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %ifnarch %{ix86}
 # arch-specific flags (like alpha's -mieee) are not valid for i386 gcc.
 # now at least i486 is required for atomic operations
-%define		optflags	-O2
+%define		optflags	-O2 -march=i486
 %endif
 # -z options are invalid for mingw linker, most of -f options are Linux-specific
 %define		filterout_ld	-Wl,-z,.*
