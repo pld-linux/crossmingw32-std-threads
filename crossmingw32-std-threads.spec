@@ -59,8 +59,8 @@ brakujących w GCC dla MinGW.
 
 %prep
 %setup -q -n mingw-std-threads-%{gitref}
-%patch0 -p1
-%patch1 -p1
+%patch -P0 -p1
+%patch -P1 -p1
 
 %build
 %if %{with tests}
